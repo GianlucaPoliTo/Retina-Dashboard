@@ -3,7 +3,7 @@ import streamlit as st
 
 def preparation_main_chart(dict_aggregate, name):
     source = pd.concat(dict_aggregate[name].values(), axis=1, keys=[str(x) for x in dict_aggregate[name].keys()])
-    source = source.melt(value_vars=source.columns, ignore_index=False)
+    source = source.melt(value_vars=source.columns, ignore_index=False).rename({"variable":"flow"}, axis=1)
     source.reset_index(drop=False, inplace=True)
     return source
 

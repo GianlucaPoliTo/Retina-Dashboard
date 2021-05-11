@@ -45,7 +45,7 @@ if __name__ == '__main__':
         space(2)
         packets_per_second_melt = preparation_main_chart(dict_aggregate, "Packet/s")
         main_chart(packets_per_second_melt, width, height, title_x="Time", title_y="Packet/s")
-        selection2 = alt.selection_multi(fields=['variable'], bind='legend')
+        selection2 = alt.selection_multi(fields=['flow'], bind='legend')
 #CDF-PDF PLOT
     filters, filters_features = multiselect_flow(real_flow, list(dict_aggregate.keys()))
     for i in filters:

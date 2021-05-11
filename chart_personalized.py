@@ -18,7 +18,6 @@ def hist_and_CDF(source, flow_id, x=None, y_left=None, y_right=None):
     )
     fig.encoding.x.title = x
     fig.encoding.y.title = y_left
-
     col1.altair_chart(fig, use_container_width=True)
     #PDF
     bar = alt.Chart(source).transform_density(
@@ -43,12 +42,12 @@ def hist_and_CDF(source, flow_id, x=None, y_left=None, y_right=None):
 
 
 def main_chart(source, width, heigth, title_x=None, title_y=None):
-    selection = alt.selection_multi(fields=['variable'], bind='legend')
+    selection = alt.selection_multi(fields=['flow'], bind='legend')
     fig = alt.Chart(source).mark_line().encode(  #kbps_series_plot_melt
         alt.X('timestamps', axis=alt.Axis(title=title_x)), #"Time"
         alt.Y('value', axis=alt.Axis(title=title_y)), #"Bitrate [kbit/s]"
-        color='variable',
-        strokeDash='variable',
+        color='flow',
+        strokeDash='flow',
         opacity=alt.condition(selection, alt.value(1), alt.value(0.2))
 
     ).properties(
