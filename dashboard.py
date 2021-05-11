@@ -8,11 +8,16 @@ from make_data import make_rtp_data
 from chart_personalized import hist_and_CDF, main_chart
 from utility import *
 from collections import defaultdict
+from PIL import Image
 
 if __name__ == '__main__':
-    #UPLOAD FILE
+
     st.set_page_config(page_title='Retina Plot Generator', layout='wide')
-    st.title('Retina Plot Generator')
+    #IMAGE-UPLOAD FILE
+    image = Image.open('Logo_retina_R.png')
+    a,b = st.beta_columns([1,9])
+    a.image(image, width=100)
+    b.title('Retina Plot Generator')
     uploaded_file = st.file_uploader("Choose a file", type="pickle")
     #DASHBOARD
     if uploaded_file is not None:
