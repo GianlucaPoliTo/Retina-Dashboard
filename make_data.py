@@ -8,7 +8,7 @@ def make_rtp_data(dict_flow_data, PT, IP_s, IP_d, LONG):
     rtp_timestamp = {}
     interarrival_min = {}
     interarrival_max = {}
-
+    real_flow = []
     for flow_id in dict_flow_data.keys():
         if ((flow_id[5] in PT) or not PT) and\
              ((flow_id[1] in IP_s) or not IP_s) and\
@@ -31,7 +31,7 @@ def make_rtp_data(dict_flow_data, PT, IP_s, IP_d, LONG):
             inter_rtp_timestamp_gap[flow_id] = inner_df['rtp_timestamp'].diff().dropna()
             len_frame[flow_id] = inner_df["len_frame"].copy()
             rtp_timestamp[flow_id] = inner_df["rtp_timestamp"].copy()
-
+            real_flow.append(flow_id)
     return {"Packet/s":packets_per_second, "kbps":kbps_series, "Interarrival [s]":inter_packet_gap_s, "RTP interarrival":inter_rtp_timestamp_gap,
             "frame length":len_frame, "RTP timestamp":rtp_timestamp,
-            "interarrival min":interarrival_min, "interarrival max":interarrival_max}
+            "interarrival min":interarrival_min, "interarrival max":interarrival_max}, real_flow

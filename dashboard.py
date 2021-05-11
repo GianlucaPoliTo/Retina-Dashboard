@@ -35,7 +35,7 @@ if __name__ == '__main__':
     st.subheader("Flows inside pcap:")
     st.table(df_table)
 #MAIN PLOT
-    dict_aggregate = make_rtp_data(dict_flow_data, PT, IP_s, IP_d, LONG)
+    dict_aggregate, real_flow = make_rtp_data(dict_flow_data, PT, IP_s, IP_d, LONG)
     if all(dict_aggregate.values()):
         kbps_series_plot_melt = preparation_main_chart(dict_aggregate, "kbps")
         st.header("Bitrate Plot")
@@ -47,9 +47,8 @@ if __name__ == '__main__':
         main_chart(packets_per_second_melt, width, height, title_x="Time", title_y="Packet/s")
         selection2 = alt.selection_multi(fields=['variable'], bind='legend')
 #CDF-PDF PLOT
-    filters, filters_features = multiselect_flow([str(i) for i in dict_flow_data.keys()], list(dict_aggregate.keys()))
+    filters, filters_features = multiselect_flow(real_flow, list(dict_aggregate.keys()))
     for i in filters:
-        i = eval(i)
         st.header(f"{i} Graph")
         space(2)
         for j in filters_features:
