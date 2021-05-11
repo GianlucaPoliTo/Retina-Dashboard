@@ -12,7 +12,7 @@ from PIL import Image
 
 if __name__ == '__main__':
 
-    st.set_page_config(page_title='Retina Plot Generator', layout='wide')
+    st.set_page_config(page_title='Retina Visualizer', layout='wide')
     #IMAGE-UPLOAD FILE
     image = Image.open('Logo_retina_R.png')
     a,b = st.beta_columns([1,9])
