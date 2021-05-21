@@ -17,7 +17,7 @@ if __name__ == '__main__':
     image = Image.open('Logo_retina_R.png')
     a,b = st.beta_columns([1,9])
     a.image(image, width=100)
-    b.title('Retina Plot Generator')
+    b.title('Retina Visualizer')
     uploaded_file = st.file_uploader("Choose a file", type="pickle")
     #DASHBOARD
     if uploaded_file is not None:
