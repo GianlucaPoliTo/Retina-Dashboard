@@ -18,7 +18,7 @@ if __name__ == '__main__':
     a,b = st.beta_columns([1,9])
     a.image(image, width=100)
     b.title('Retina Visualizer')
-    st.write('This is the latest tool by Retina that helps you to visualize graphs for your RTP traffic analysis.\nDiscover all its potential on: [link](https://github.com/GianlucaPoliTo/Retina/))'
+    st.write('This is the latest tool by Retina that helps you to visualize graphs for your RTP traffic analysis.\nDiscover all its potential on: [link](https://github.com/GianlucaPoliTo/Retina/)')
     uploaded_file = st.file_uploader("Choose a file", type="pickle")
     #DASHBOARD
     if uploaded_file is not None:
