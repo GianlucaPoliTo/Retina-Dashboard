@@ -15,7 +15,7 @@ if __name__ == '__main__':
     st.set_page_config(page_title='Retina Visualizer', layout='wide')
     #IMAGE-UPLOAD FILE
     image = Image.open('Logo_retina_R.png')
-    a,b = st.beta_columns([1,9])
+    a,b = st.columns([1,9])
     a.image(image, width=100)
     b.title('Retina Visualizer')
     st.write('This is the latest tool by Retina that helps you to visualize graphs for your RTP traffic analysis.')
