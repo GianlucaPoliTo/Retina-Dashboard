@@ -18,7 +18,7 @@ def create_description(dict_aggregate, flow, filters_features):
     return pd.DataFrame.from_dict(dict_description)
 
 def multiselect_flow(flows, features):
-    col1, col2 = st.beta_columns(2)
+    col1, col2 = st.columns(2)
     filters = col1.multiselect("Select Flow Compare", flows)
     filters_features = col2.multiselect("Select Features", features)
     return filters, filters_features
