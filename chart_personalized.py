@@ -5,7 +5,7 @@ from utility import space
 
 def hist_and_CDF(source, flow_id, x=None, y_left=None, y_right=None):
 
-    col1, col2 = st.beta_columns(2)
+    col1, col2 = st.columns(2)
     fig = alt.Chart(source).transform_window(
         cumulative_count="count()",
         sort=[{"field": flow_id}],
