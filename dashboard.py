@@ -2,7 +2,6 @@ import altair as alt
 import pandas as pd
 import streamlit as st
 from sidebar import load_sidebar
-import pickle
 import altair as alt
 from make_data import make_rtp_data
 from chart_personalized import hist_and_CDF, main_chart
@@ -28,11 +27,11 @@ if __name__ == '__main__':
         bytes_data = uploaded_file.getvalue()
     # To convert to a string based IO:
     #TABLE
-        dict_flow_data = pickle.loads(bytes_data)
+        dict_flow_data = pd.compat.pickle_compat.loads(bytes_data)
     else:
         st.write(f'You selected 3_p.pickle')
         with open(r"basic_example/3_p.pickle", "rb") as f:
-            dict_flow_data = pickle.load(f)
+            dict_flow_data = pd.compat.pickle_compat.load(f)
 
     df_table = [list(key)+[dict_flow_data[key].shape[0], dict_flow_data[key]["len_frame"].mean()] for key in dict_flow_data]
     df_table = pd.DataFrame(df_table, columns=["SSRC", "IP SRC", "IP DST", "PORT SRC", "PORT DST", "PT", "DURATION", "PKT_AVG"])
